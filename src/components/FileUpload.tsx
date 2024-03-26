@@ -1,4 +1,6 @@
-import React, { ChangeEvent, useState } from "react";
+"use client";
+
+import { ChangeEvent, useState } from "react";
 import Image from "next/image";
 import { LuImagePlus } from "react-icons/lu";
 
@@ -32,7 +34,7 @@ const FileUpload = () => {
         className="relative w-[50%] !h-[100px] flex justify-center items-center flex-col rounded-md border border-dashed border-green-500 cursor-pointer"
       >
         <LuImagePlus size={24} />
-        <p>Avatar</p>
+        <p>Image</p>
         {img && (
           <Image
             src={img}

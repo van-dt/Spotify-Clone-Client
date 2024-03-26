@@ -3,16 +3,18 @@
 import Link from "next/link";
 import Modal from "./Modal";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { FormEventHandler, useState } from "react";
+import { FormEventHandler, useContext, useState } from "react";
 import { validateEmail } from "../utils/text";
 import useSignUpModal from "../hooks/useSignUpModal";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { SignUpData } from "../types";
 import useLoginModal from "../hooks/useLoginModal";
+import { ToastContext } from "../contexts/ToastContext";
 
 const SignUpModal = () => {
   const [isEmail, setIsEmail] = useState(false);
   const [hide, setHide] = useState(true);
+  const { notify } = useContext(ToastContext);
   const { isOpen, onClose } = useSignUpModal();
   const { onOpen } = useLoginModal();
 
@@ -31,7 +33,16 @@ const SignUpModal = () => {
 
   const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
+    if (!isEmail) {
+      notify("error", "Email is invalid");
+    }
     console.log("userSignUpData", userSignUpData);
+    setUserSignUpData({
+      fullName: "",
+      email: "",
+      password: "",
+      avatarUrl: undefined,
+    });
   };
 
   return (

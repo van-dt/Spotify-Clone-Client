@@ -2,9 +2,22 @@
 
 import { AiOutlinePlus } from "react-icons/ai";
 import { TbPlaylist } from "react-icons/tb";
+import useLoginModal from "../hooks/useLoginModal";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
+import useUploadModal from "../hooks/useUploadModal";
 
 const Library = () => {
-  const onClick = () => {};
+  const loginModal = useLoginModal();
+  const uploadModal = useUploadModal();
+  const { user } = useContext(UserContext);
+
+  const onClick = () => {
+    if (!user) {
+      return loginModal.onOpen();
+    }
+    return uploadModal.onOpen();
+  };
 
   return (
     <div className="flex flex-col">

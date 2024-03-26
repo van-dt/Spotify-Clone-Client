@@ -8,6 +8,12 @@ import { twMerge } from "tailwind-merge";
 import Button from "./Button";
 import useLoginModal from "../hooks/useLoginModal";
 import useSignUpModal from "../hooks/useSignUpModal";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
+import { FaUserAlt } from "react-icons/fa";
+import { setCookie } from "cookies-next";
+import { ToastContext } from "../contexts/ToastContext";
+import Image from "next/image";
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -19,8 +25,14 @@ const Header = ({ children, className }: HeaderProps) => {
   const loginModal = useLoginModal();
   const signUpModal = useSignUpModal();
 
+  const { notify } = useContext(ToastContext);
+  const { user, getUser } = useContext(UserContext);
+
   const handleLogout = () => {
-    console.log("Logging out");
+    setCookie("token", "");
+    getUser();
+    router.refresh();
+    notify("success", "Logged out!");
   };
 
   return (
@@ -56,19 +68,49 @@ const Header = ({ children, className }: HeaderProps) => {
         </div>
 
         <div className="flex justify-between items-center gap-x-4">
-          <div>
-            <Button
-              className="bg-transparent text-neutral-300 font-medium"
-              onClick={signUpModal.onOpen}
-            >
-              Sign up
-            </Button>
-          </div>
-          <div>
-            <Button className="bg-white px-6 py-2" onClick={loginModal.onOpen}>
-              Log in
-            </Button>
-          </div>
+          {user ? (
+            <>
+              <Button onClick={handleLogout} className="bg-white px-6 py-2">
+                Logout
+              </Button>
+              <Button
+                onClick={() => {
+                  router.push("/profile");
+                }}
+                className="w-16 h-12 relative bg-white"
+              >
+                {user.avatarUrl ? (
+                  <Image
+                    src={user.avatarUrl}
+                    alt="Avatar"
+                    fill
+                    className="w-full h-full object-cover absolute rounded-full"
+                  />
+                ) : (
+                  <FaUserAlt />
+                )}
+              </Button>
+            </>
+          ) : (
+            <>
+              <div>
+                <Button
+                  className="bg-transparent text-neutral-300 font-medium"
+                  onClick={signUpModal.onOpen}
+                >
+                  Sign up
+                </Button>
+              </div>
+              <div>
+                <Button
+                  className="bg-white px-6 py-2"
+                  onClick={loginModal.onOpen}
+                >
+                  Log in
+                </Button>
+              </div>
+            </>
+          )}
         </div>
       </div>
       {children}

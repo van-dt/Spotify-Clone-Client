@@ -3,16 +3,23 @@
 import Link from "next/link";
 import Modal from "./Modal";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { FormEventHandler, useState } from "react";
+import { FormEventHandler, useContext, useState } from "react";
 import { validateEmail } from "../utils/text";
 import useLoginModal from "../hooks/useLoginModal";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { LoginData } from "../types";
 import useSignUpModal from "../hooks/useSignUpModal";
+import { ToastContext } from "../contexts/ToastContext";
+import axios from "axios";
+import { setCookie } from "cookies-next";
+import { UserContext } from "../contexts/UserContext";
 
 const LoginModal = () => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const [isEmail, setIsEmail] = useState(false);
   const [hide, setHide] = useState(true);
+  const { notify } = useContext(ToastContext);
+  const { getUser } = useContext(UserContext);
   const { isOpen, onClose } = useLoginModal();
   const { onOpen } = useSignUpModal();
 
@@ -27,8 +34,27 @@ const LoginModal = () => {
     }
   };
 
-  const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
+  const onSubmit = async () => {
+    if (!isEmail) {
+      notify("error", "Email is invalid");
+      return;
+    }
+    try {
+      const res = await axios.post(`${apiUrl}/auth/login`, userLoginData);
+      const loginData = res.data.data;
+      const token = loginData.token;
+      setCookie("token", token);
+      getUser();
+      notify("success", "Login successful");
+      onClose();
+    } catch (error) {
+      console.error("Login error", error);
+      notify("error", "Something went wrong!");
+    }
+    setUserLoginData({
+      email: "",
+      password: "",
+    });
   };
 
   return (
@@ -38,7 +64,7 @@ const LoginModal = () => {
       isOpen={isOpen}
       onChange={onChange}
     >
-      <form className="mt-8 space-y-6 text-white" onSubmit={(e) => onSubmit(e)}>
+      <div className="mt-8 space-y-6 text-white">
         <input type="hidden" name="remember" value="true" />
         <div className="relative">
           {isEmail && (
@@ -134,7 +160,7 @@ const LoginModal = () => {
         </div>
         <div>
           <button
-            type="submit"
+            onClick={onSubmit}
             className="w-full flex justify-center bg-green-500 text-gray-100 p-4 rounded-full tracking-wide font-semibold  focus:outline-none focus:shadow-outline hover:bg-green-600 shadow-lg cursor-pointer transition ease-in duration-300"
           >
             Login
@@ -154,7 +180,7 @@ const LoginModal = () => {
             Sign up
           </Link>
         </p>
-      </form>
+      </div>
     </Modal>
   );
 };
