@@ -10,11 +10,16 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import { SignUpData } from "../types";
 import useLoginModal from "../hooks/useLoginModal";
 import { ToastContext } from "../contexts/ToastContext";
+import axios from "axios";
+import { setCookie } from "cookies-next";
+import { UserContext } from "../contexts/UserContext";
 
 const SignUpModal = () => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const [isEmail, setIsEmail] = useState(false);
   const [hide, setHide] = useState(true);
   const { notify } = useContext(ToastContext);
+  const { getUser } = useContext(UserContext);
   const { isOpen, onClose } = useSignUpModal();
   const { onOpen } = useLoginModal();
 
@@ -31,12 +36,23 @@ const SignUpModal = () => {
     }
   };
 
-  const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+  const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     if (!isEmail) {
       notify("error", "Email is invalid");
     }
-    console.log("userSignUpData", userSignUpData);
+    try {
+      const res = await axios.post(`${apiUrl}/auth/sign-up`, userSignUpData);
+      const loginData = res.data.data;
+      const token = loginData.token;
+      setCookie("token", token);
+      getUser();
+      notify("success", "Register successful");
+      onClose();
+    } catch (error) {
+      console.error("Register error", error);
+      notify("error", "Something went wrong!");
+    }
     setUserSignUpData({
       fullName: "",
       email: "",

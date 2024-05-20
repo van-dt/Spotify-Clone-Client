@@ -10,18 +10,21 @@ import { ToastContext } from "../contexts/ToastContext";
 import { LuImagePlus } from "react-icons/lu";
 import Image from "next/image";
 import { fetchSecureApi } from "../utils";
-import { SongData, UploadResponse } from "../types";
+import { AuthorData, CategoryData, SongData, UploadResponse } from "../types";
 import { useRouter } from "next/navigation";
+import AuthorSelectBox from "./AuthorSelectBox";
+import CategorySelectBox from "./CategorySelectBox";
 
 const UploadModal = () => {
   const router = useRouter();
-
   const [isLoading, setIsLoading] = useState(false);
   const { isOpen, onClose } = useUploadModal();
   const { notify } = useContext(ToastContext);
 
   const [img, setImg] = useState<string>("");
   const [fileImg, setFileImg] = useState<File>();
+  const [authorData, setAuthorData] = useState<AuthorData | null>(null);
+  const [categories, setCategories] = useState<CategoryData[]>([]);
 
   const handleChooseImg = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -53,7 +56,7 @@ const UploadModal = () => {
       title: "",
       song: null,
       image: null,
-      author: "",
+      author: 0,
     },
   });
 
@@ -65,8 +68,6 @@ const UploadModal = () => {
   };
 
   const onSubmit: SubmitHandler<FieldValues> = async (values) => {
-    console.log("values", values);
-
     try {
       setIsLoading(true);
 
@@ -106,9 +107,10 @@ const UploadModal = () => {
 
       const songData = await fetchSecureApi<SongData>("post", "songs", {
         title: values.title,
-        author: values.author,
         songPath,
         imagePath,
+        authorId: authorData?.id,
+        categoryIds: categories.map((category) => category.id),
       });
 
       if (songData?.id) {
@@ -150,15 +152,25 @@ const UploadModal = () => {
           <p className="text-red-500 text-sm">* Title is required.</p>
         )}
 
-        <Input
+        <AuthorSelectBox
           id="author"
           disabled={isLoading}
-          {...register("author", { required: "Author is required." })}
-          placeholder="Song author"
+          register={register("author", {
+            required: "Author is required.",
+          })}
+          authorData={authorData}
+          setAuthorData={setAuthorData}
         />
         {errors?.author && (
           <p className="text-red-500 text-sm">* Author is required.</p>
         )}
+
+        <CategorySelectBox
+          id="categoryIds"
+          disabled={isLoading}
+          categories={categories}
+          setCategories={setCategories}
+        />
 
         <div>
           <div className="pb-1 mb-1">Select a song file</div>

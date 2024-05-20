@@ -10,6 +10,7 @@ export type SignUpData = {
   avatarUrl?: string;
 };
 
+// user
 export type User = {
   id: string;
   email: string;
@@ -22,11 +23,42 @@ export type UploadResponse = {
   filename: string;
 };
 
+// song
 export type SongData = {
   id: number;
   title: string;
   songPath: string;
   imagePath: string;
-  author: string;
+  author: AuthorData;
+  categories: string[];
   createdAt?: string;
+  updatedAt?: string;
+};
+
+export type SongLike = {
+  userId: number;
+  songId: number;
+};
+
+export type CheckSongLike = {
+  isLiked: boolean;
+};
+
+// author
+export type AuthorData = {
+  id: number;
+  authorName: string;
+  image?: string;
+  createdAt?: string;
+  updatedAt?: string;
+};
+
+// category
+
+export type CategoryData = {
+  id: number;
+  categoryName: string;
+  image?: string;
+  createdAt?: string;
+  updatedAt?: string;
 };

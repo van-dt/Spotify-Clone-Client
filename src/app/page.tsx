@@ -9,12 +9,14 @@ import { SongData } from "../types";
 import { ToastContext } from "../contexts/ToastContext";
 import { fetchSecureApi } from "../utils";
 import PageContent from "../components/PageContent";
+import { UserContext } from "../contexts/UserContext";
 
 export const revalidate = 0;
 
 export default function Home() {
   const [songs, setSongs] = useState<SongData[]>([]);
   const { notify } = useContext(ToastContext);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +30,7 @@ export default function Home() {
       }
     };
     fetchData();
-  }, [notify]);
+  }, [notify, user]);
 
   return (
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto mx-2 lg:mx-0">

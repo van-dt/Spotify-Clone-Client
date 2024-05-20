@@ -6,11 +6,20 @@ import useLoginModal from "../hooks/useLoginModal";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import useUploadModal from "../hooks/useUploadModal";
+import { SongData } from "../types";
+import MediaItem from "./MediaItem";
+import useOnPlay from "../hooks/useOnPlay";
 
-const Library = () => {
+interface LibraryProps {
+  songs: SongData[];
+}
+
+const Library = ({ songs }: LibraryProps) => {
   const loginModal = useLoginModal();
   const uploadModal = useUploadModal();
   const { user } = useContext(UserContext);
+
+  const onPlay = useOnPlay(songs);
 
   const onClick = () => {
     if (!user) {
@@ -32,7 +41,21 @@ const Library = () => {
           className="text-neutral-400 cursor-pointer hover:text-white transition"
         />
       </div>
-      <div className="flex fex-col gap-y-2 mt-4 px-3">List of song!</div>
+      <div className="flex flex-col gap-y-2 mt-4 px-3">
+        {songs?.length ? (
+          <>
+            {songs.map((song) => (
+              <MediaItem
+                key={song.id}
+                onClick={(id: number) => onPlay(id)}
+                data={song}
+              />
+            ))}
+          </>
+        ) : (
+          <div>No Song in library</div>
+        )}
+      </div>
     </div>
   );
 };

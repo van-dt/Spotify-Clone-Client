@@ -12,7 +12,6 @@ import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { FaUserAlt } from "react-icons/fa";
 import { setCookie } from "cookies-next";
-import { ToastContext } from "../contexts/ToastContext";
 import Image from "next/image";
 
 interface HeaderProps {
@@ -25,14 +24,12 @@ const Header = ({ children, className }: HeaderProps) => {
   const loginModal = useLoginModal();
   const signUpModal = useSignUpModal();
 
-  const { notify } = useContext(ToastContext);
   const { user, getUser } = useContext(UserContext);
 
   const handleLogout = () => {
     setCookie("token", "");
     getUser();
-    router.refresh();
-    notify("success", "Logged out!");
+    window.location.reload();
   };
 
   return (
