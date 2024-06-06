@@ -14,13 +14,13 @@ import { FaUserAlt } from "react-icons/fa";
 import { setCookie } from "cookies-next";
 import Image from "next/image";
 
-interface HeaderProps {
+interface BannerHeaderProps {
   children: React.ReactNode;
   className?: string;
-  color?: string;
+  banner?: string;
 }
 
-const Header = ({ children, className, color }: HeaderProps) => {
+const BannerHeader = ({ children, className, banner }: BannerHeaderProps) => {
   const router = useRouter();
   const loginModal = useLoginModal();
   const signUpModal = useSignUpModal();
@@ -36,12 +36,22 @@ const Header = ({ children, className, color }: HeaderProps) => {
   return (
     <div
       className={twMerge(
-        `h-fit bg-gradient-to-b from-emerald-800 p-6`,
+        `h-fit ${banner ?? "bg-gradient-to-b from-emerald-800"} p-6 relative`,
         className
       )}
     >
+      {banner && (
+        <div className="w-full h-full absolute top-0 left-0 right-0 bottom-0">
+          <Image
+            src={banner}
+            alt="banner"
+            fill
+            className="object-cover object-top opacity-70"
+          />
+        </div>
+      )}
       <div className="w-full mb-4 flex items-center justify-between">
-        <div className="hidden md:flex gap-x-2 items-center">
+        <div className="hidden md:flex gap-x-2 items-center absolute top-6 left-6">
           <button
             className="rounded-full bg-black flex items-center justify-center hover:opacity-75 transition"
             onClick={() => router.back()}
@@ -65,7 +75,7 @@ const Header = ({ children, className, color }: HeaderProps) => {
           </button>
         </div>
 
-        <div className="flex justify-between items-center gap-x-4">
+        <div className="flex justify-between items-center gap-x-4 absolute top-6 right-6">
           {user ? (
             <>
               <Button onClick={handleLogout} className="bg-white px-6 py-2">
@@ -116,4 +126,4 @@ const Header = ({ children, className, color }: HeaderProps) => {
   );
 };
 
-export default Header;
+export default BannerHeader;

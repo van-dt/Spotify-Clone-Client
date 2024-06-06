@@ -4,11 +4,11 @@ import useOnPlay from "../hooks/useOnPlay";
 import { SongData } from "../types";
 import SongItem from "./SongItem";
 
-interface PageContentProps {
+interface SongContentProps {
   songs: SongData[];
 }
 
-const PageContent = ({ songs }: PageContentProps) => {
+const SongContent = ({ songs }: SongContentProps) => {
   const onPlay = useOnPlay(songs);
 
   if (songs.length === 0)
@@ -28,4 +28,4 @@ const PageContent = ({ songs }: PageContentProps) => {
   );
 };
 
-export default PageContent;
+export default SongContent;

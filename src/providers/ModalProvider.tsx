@@ -9,11 +9,13 @@ const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    if (!isMounted) {
+      setIsMounted(true);
+    }
+  }, [isMounted]);
 
   if (!isMounted) {
-    return null;
+    return <></>;
   }
 
   return (

@@ -1,12 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { SongData } from "../../../../types";
+import { SongData } from "../../../types";
 import { useContext, useEffect } from "react";
-import { UserContext } from "../../../../contexts/UserContext";
-import MediaItem from "../../../../components/MediaItem";
-import LikeButton from "../../../../components/LikeButton";
-import useOnPlay from "../../../../hooks/useOnPlay";
+import { UserContext } from "../../../contexts/UserContext";
+import MediaItem from "../../../components/MediaItem";
+import LikeButton from "../../../components/LikeButton";
+import useOnPlay from "../../../hooks/useOnPlay";
 
 interface LikedContentProps {
   songs: SongData[];

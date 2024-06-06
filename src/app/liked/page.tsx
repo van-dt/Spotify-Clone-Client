@@ -1,11 +1,11 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
-import { SongData } from "../../../types";
-import { UserContext } from "../../../contexts/UserContext";
-import { ToastContext } from "../../../contexts/ToastContext";
-import { fetchSecureApi } from "../../../utils";
-import Header from "../../../components/Header";
+import { SongData } from "../../types";
+import { UserContext } from "../../contexts/UserContext";
+import { ToastContext } from "../../contexts/ToastContext";
+import { fetchSecureApi } from "../../utils";
+import Header from "../../components/Header";
 import Image from "next/image";
 import LikedContent from "./components/LikedContent";
 

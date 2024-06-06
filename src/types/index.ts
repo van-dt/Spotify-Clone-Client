@@ -29,8 +29,18 @@ export type SongData = {
   title: string;
   songPath: string;
   imagePath: string;
+  likeCount: number;
   author: AuthorData;
   categories: string[];
+  createdAt?: string;
+  updatedAt?: string;
+};
+
+export type SongShortData = {
+  id: number;
+  title: string;
+  songPath: string;
+  imagePath: string;
   createdAt?: string;
   updatedAt?: string;
 };
@@ -49,6 +59,8 @@ export type AuthorData = {
   id: number;
   authorName: string;
   image?: string;
+  banner?: string;
+  songs: SongData[];
   createdAt?: string;
   updatedAt?: string;
 };
@@ -59,6 +71,20 @@ export type CategoryData = {
   id: number;
   categoryName: string;
   image?: string;
+  banner?: string;
+  songs: SongData[];
+  createdAt?: string;
+  updatedAt?: string;
+};
+
+// playlist
+
+export type PlaylistData = {
+  id: number;
+  playlistName: string;
+  image?: string;
+  banner?: string;
+  songs: SongData[];
   createdAt?: string;
   updatedAt?: string;
 };

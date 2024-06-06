@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Header from "../../../components/Header";
-import SearchInput from "../../../components/SearchInput";
-import { getSongByTitle } from "../../../utils/songs";
-import { SongData } from "../../../types";
+import Header from "../../components/Header";
+import SearchInput from "../../components/SearchInput";
+import { getSongByTitle } from "../../utils/songs";
+import { SongData } from "../../types";
 import SearchContent from "./components/SearchContent";
 
 interface SearchProps {

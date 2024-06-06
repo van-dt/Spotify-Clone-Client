@@ -11,12 +11,10 @@ import { LuImagePlus } from "react-icons/lu";
 import Image from "next/image";
 import { fetchSecureApi } from "../utils";
 import { AuthorData, CategoryData, SongData, UploadResponse } from "../types";
-import { useRouter } from "next/navigation";
 import AuthorSelectBox from "./AuthorSelectBox";
 import CategorySelectBox from "./CategorySelectBox";
 
 const UploadModal = () => {
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const { isOpen, onClose } = useUploadModal();
   const { notify } = useContext(ToastContext);
@@ -60,9 +58,17 @@ const UploadModal = () => {
     },
   });
 
+  const resetData = () => {
+    setImg("");
+    setFileImg(undefined);
+    setAuthorData(null);
+    setCategories([]);
+  };
+
   const onChange = (open: boolean) => {
     if (!open) {
       reset();
+      resetData();
       onClose();
     }
   };
@@ -114,9 +120,11 @@ const UploadModal = () => {
       });
 
       if (songData?.id) {
-        router.refresh();
         setIsLoading(false);
         notify("success", "Song created!");
+        setTimeout(() => {
+          location.reload();
+        }, 1500);
         reset();
       }
     } catch (error) {
@@ -124,6 +132,7 @@ const UploadModal = () => {
     } finally {
       setIsLoading(false);
       reset();
+      resetData();
       onClose();
     }
   };
