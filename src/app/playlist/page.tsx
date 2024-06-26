@@ -8,11 +8,23 @@ import { PlaylistData } from "../../types";
 import Image from "next/image";
 import Header from "../../components/Header";
 import PlaylistContent from "./components/PlaylistContent";
+import Button from "../../components/Button";
+import useCreatePlaylistModal from "../../hooks/useCreatePlaylistModel";
+import useLoginModal from "../../hooks/useLoginModal";
 
 const Playlist = () => {
+  const createPlaylistModal = useCreatePlaylistModal();
+  const loginModal = useLoginModal();
   const [playlists, setPlaylists] = useState<PlaylistData[]>([]);
   const { user } = useContext(UserContext);
   const { notify } = useContext(ToastContext);
+
+  const onClick = () => {
+    if (!user) {
+      return loginModal.onOpen();
+    }
+    return createPlaylistModal.onOpen();
+  };
 
   useEffect(() => {
     if (!user?.id) return;
@@ -52,7 +64,14 @@ const Playlist = () => {
           </div>
         </div>
       </Header>
-      <PlaylistContent playlists={playlists} />
+      <div className="mt-2 mb-7 px-6">
+        <Button className="w-40" onClick={onClick}>
+          Create Playlist
+        </Button>
+        <div className="mt-8">
+          <PlaylistContent playlists={playlists} />
+        </div>
+      </div>
     </div>
   );
 };

@@ -2,14 +2,14 @@
 
 import { useParams } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../../contexts/UserContext";
-import { ToastContext } from "../../../contexts/ToastContext";
-import { fetchSecureApi } from "../../../utils";
-import { AuthorData } from "../../../types";
-import BannerHeader from "../../../components/BannerHeader";
+import { UserContext } from "@/src/contexts/UserContext";
+import { ToastContext } from "@/src/contexts/ToastContext";
+import { fetchSecureApi } from "@/src/utils";
+import { AuthorData } from "@/types";
+import BannerHeader from "@/src/components/BannerHeader";
 import { BsFillPatchCheckFill } from "react-icons/bs";
 import SongAuthorContent from "../components/SongAuthorContent";
-import Footer from "../../../components/Footer";
+import Footer from "@/src/components/Footer";
 
 const AuthorDetail = () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -63,8 +63,9 @@ const AuthorDetail = () => {
           <Footer />
         </div>
       ) : (
-        <div className="flex flex-col gap-y-2 w-full px-6 text-neutral-400">
-          No songs.
+        <div className="w-full absolute top-[50vh] min-h-[45vh] backdrop-blur-xl bg-gradient-to-t from-neutral-900 text-center">
+          <p className="font-bold text-2xl h-[32vh] pt-32">No songs.</p>
+          <Footer />
         </div>
       )}
     </div>

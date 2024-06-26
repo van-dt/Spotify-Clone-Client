@@ -2,14 +2,14 @@
 
 import { useParams } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
-import { CategoryData } from "../../../types";
-import { UserContext } from "../../../contexts/UserContext";
-import { ToastContext } from "../../../contexts/ToastContext";
-import { fetchSecureApi } from "../../../utils";
-import Header from "../../../components/Header";
+import { CategoryData } from "@/types";
+import { UserContext } from "@/src/contexts/UserContext";
+import { ToastContext } from "@/src/contexts/ToastContext";
+import { fetchSecureApi } from "@/src/utils";
+import Header from "@/src/components/Header";
 import Image from "next/image";
-import Footer from "../../../components/Footer";
-import SongContent from "../../../components/SongContent";
+import Footer from "@/src/components/Footer";
+import SongContent from "@/src/components/SongContent";
 
 const CategoryDetail = () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;

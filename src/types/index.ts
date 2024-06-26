@@ -88,3 +88,33 @@ export type PlaylistData = {
   createdAt?: string;
   updatedAt?: string;
 };
+
+// stripe
+
+export type Price = {
+  id: string;
+  object: string;
+  active: boolean;
+  billing_scheme: string;
+  created: number;
+  currency: string;
+  custom_unit_amount: Object | null;
+  livemode: boolean;
+  lookup_key: Object | null;
+  metadata: {};
+  nickname: Object | null;
+  product: string;
+  recurring: {
+    aggregate_usage: Object | null;
+    interval: string;
+    interval_count: number;
+    trial_period_days: Object | null;
+    usage_type: string;
+  };
+  tax_behavior: string;
+  tiers_mode: Object | null;
+  transform_quantity: Object | null;
+  type: string;
+  unit_amount: number;
+  unit_amount_decimal: string;
+};

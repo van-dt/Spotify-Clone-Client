@@ -2,8 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { PlaylistData } from "../../../types";
-import { useContext, useEffect } from "react";
-import { UserContext } from "../../../contexts/UserContext";
+import PlaylistItem from "../../../components/PlaylistItem";
 
 interface PlaylistContentProps {
   playlists: PlaylistData[];
@@ -11,11 +10,6 @@ interface PlaylistContentProps {
 
 const PlaylistContent = ({ playlists }: PlaylistContentProps) => {
   const router = useRouter();
-  const { user } = useContext(UserContext);
-
-  useEffect(() => {
-    if (!user) router.replace("/");
-  }, [user, router]);
 
   if (playlists.length === 0) {
     return (
@@ -26,11 +20,15 @@ const PlaylistContent = ({ playlists }: PlaylistContentProps) => {
   }
 
   return (
-    <div className="flex flex-col gap-y-2 w-full p-6">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-8 gap-4 mt-4">
       {playlists.map((playlist) => (
-        <div key={playlist.id} className="flex items-center gap-x-4 w-full">
-          <div className="flex-1">{playlist.playlistName}</div>
-        </div>
+        <PlaylistItem
+          key={playlist.id}
+          onClick={(id: number) => {
+            router.push(`/playlist/${id}`);
+          }}
+          data={playlist}
+        />
       ))}
     </div>
   );

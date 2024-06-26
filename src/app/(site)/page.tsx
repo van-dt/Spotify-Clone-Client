@@ -2,17 +2,17 @@
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Header from "../../components/Header";
-import ListItem from "../../components/ListItem";
+import Header from "@/src/components/Header";
+import ListItem from "@/src/components/ListItem";
 import { useContext, useEffect, useState } from "react";
-import { AuthorData, CategoryData, SongData } from "../../types";
-import { ToastContext } from "../../contexts/ToastContext";
-import { fetchSecureApi } from "../../utils";
-import SongContent from "../../components/SongContent";
-import { UserContext } from "../../contexts/UserContext";
-import AuthorContent from "../../components/AuthorContent";
-import Footer from "../../components/Footer";
-import CategoryContent from "../../components/CategoryContent";
+import { AuthorData, CategoryData, SongData } from "@/types";
+import { ToastContext } from "@/src/contexts/ToastContext";
+import { fetchSecureApi } from "@/src/utils";
+import SongContent from "@/src/components/SongContent";
+import { UserContext } from "@/src/contexts/UserContext";
+import AuthorContent from "@/src/components/AuthorContent";
+import Footer from "@/src/components/Footer";
+import CategoryContent from "@/src/components/CategoryContent";
 
 export const revalidate = 0;
 

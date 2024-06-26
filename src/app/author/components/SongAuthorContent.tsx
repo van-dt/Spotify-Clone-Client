@@ -4,11 +4,11 @@ import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
 import { FaPlay } from "react-icons/fa";
 import { Chip } from "@mui/material";
-import { SongData } from "../../../types";
-import { UserContext } from "../../../contexts/UserContext";
-import useOnPlay from "../../../hooks/useOnPlay";
-import MediaItem from "../../../components/MediaItem";
-import LikeButton from "../../../components/LikeButton";
+import { SongData } from "@/types";
+import { UserContext } from "@/src/contexts/UserContext";
+import useOnPlay from "@/src/hooks/useOnPlay";
+import MediaItem from "@/src/components/MediaItem";
+import LikeButton from "@/src/components/LikeButton";
 
 interface SongAuthorContentProps {
   songs: SongData[];
