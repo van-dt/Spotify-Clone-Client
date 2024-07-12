@@ -44,3 +44,33 @@ export async function fetchSecureApi<T>(
     console.error("Api Error:", error);
   }
 }
+
+export async function fetchPublicApi<T>(
+  method: APIMethod,
+  path: string,
+  data?: any
+): Promise<T | undefined> {
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL!;
+  try {
+    switch (method) {
+      case "get": {
+        const res = await axios.get(`${apiBaseUrl}/${path}`);
+        return res.data.data as T;
+      }
+      case "post": {
+        const res = await axios.post(`${apiBaseUrl}/${path}`, data);
+        return res.data.data as T;
+      }
+      case "put": {
+        const res = await axios.put(`${apiBaseUrl}/${path}`, data);
+        return res.data.data as T;
+      }
+      case "delete": {
+        const res = await axios.delete(`${apiBaseUrl}/${path}`);
+        return res.data.data as T;
+      }
+    }
+  } catch (error) {
+    console.error("Api Error:", error);
+  }
+}

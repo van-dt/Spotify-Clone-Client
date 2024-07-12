@@ -6,6 +6,7 @@ import SignUpModal from "@/src/components/SignUpModal";
 import UploadModal from "@/src/components/UploadModal";
 import SubscribeModel from "@/src/components/SubscribeModel";
 import CreatePlaylistModel from "../components/CreatePlaylistModel";
+import UpdatePlaylistModel from "../components/UpdatePlaylistModel";
 
 const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -27,6 +28,7 @@ const ModalProvider = () => {
       <UploadModal />
       <SubscribeModel />
       <CreatePlaylistModel />
+      <UpdatePlaylistModel />
     </>
   );
 };

@@ -11,6 +11,8 @@ import PlaylistContent from "./components/PlaylistContent";
 import Button from "../../components/Button";
 import useCreatePlaylistModal from "../../hooks/useCreatePlaylistModel";
 import useLoginModal from "../../hooks/useLoginModal";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Playlist = () => {
   const createPlaylistModal = useCreatePlaylistModal();
@@ -44,6 +46,7 @@ const Playlist = () => {
 
   return (
     <div className="bg-neutral-900 rounded-lg w-full h-full overflow-hidden overflow-y-auto">
+      <ToastContainer />
       <Header>
         <div className="mt-20">
           <div className="flex flex-col md:flex-row items-center gap-x-5">

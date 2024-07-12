@@ -141,24 +141,8 @@ const LoginModal = () => {
             }}
           />
         </div>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <input
-              id="remember_me"
-              type="checkbox"
-              className="h-4 w-4 bg-green-500 focus:ring-green-400 border-gray-300 rounded"
-            />
-            <label htmlFor="remember_me" className="ml-2 block text-sm">
-              Remember me
-            </label>
-          </div>
-          <div className="text-sm">
-            <Link href="#" className="font-medium hover:text-green-500">
-              Forgot your password?
-            </Link>
-          </div>
-        </div>
-        <div>
+
+        <div className="!mt-10">
           <button
             onClick={onSubmit}
             className="w-full flex justify-center bg-green-500 text-gray-100 p-4 rounded-full tracking-wide font-semibold  focus:outline-none focus:shadow-outline hover:bg-green-600 shadow-lg cursor-pointer transition ease-in duration-300"

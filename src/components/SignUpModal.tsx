@@ -133,14 +133,20 @@ const SignUpModal = () => {
           {hide ? (
             <button
               className="absolute right-0 bottom-0 mb-2 mr-3 cursor-pointer"
-              onClick={() => setHide(false)}
+              onClick={(e) => {
+                e.preventDefault();
+                setHide(false);
+              }}
             >
               <FaRegEyeSlash size={22} className="text-green-500" />
             </button>
           ) : (
             <button
               className="absolute right-0 bottom-0 mb-2 mr-3 cursor-pointer"
-              onClick={() => setHide(true)}
+              onClick={(e) => {
+                e.preventDefault();
+                setHide(true);
+              }}
             >
               <FaRegEye size={22} className="text-green-500" />
             </button>

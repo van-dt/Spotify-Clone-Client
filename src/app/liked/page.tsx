@@ -8,6 +8,8 @@ import { fetchSecureApi } from "../../utils";
 import Header from "../../components/Header";
 import Image from "next/image";
 import LikedContent from "./components/LikedContent";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Liked = () => {
   const [songs, setSongs] = useState<SongData[]>([]);
@@ -32,6 +34,7 @@ const Liked = () => {
 
   return (
     <div className="bg-neutral-900 rounded-lg w-full h-full overflow-hidden overflow-y-auto">
+      <ToastContainer />
       <Header>
         <div className="mt-20">
           <div className="flex flex-col md:flex-row items-center gap-x-5">

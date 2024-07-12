@@ -1,7 +1,7 @@
 import { SongData } from "../types";
-import { fetchSecureApi } from "./api";
+import { fetchPublicApi } from "./api";
 
 export const getSongByTitle = async (title: string) => {
-  const songs = await fetchSecureApi<SongData[]>("get", `songs?title=${title}`);
+  const songs = await fetchPublicApi<SongData[]>("get", `songs?title=${title}`);
   return songs ?? [];
 };

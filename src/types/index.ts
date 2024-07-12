@@ -15,7 +15,8 @@ export type User = {
   id: string;
   email: string;
   fullName: string;
-  avatarUrl: string;
+  avatarUrl?: string;
+  bio?: string;
 };
 
 export type UploadResponse = {

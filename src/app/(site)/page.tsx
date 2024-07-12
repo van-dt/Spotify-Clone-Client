@@ -7,7 +7,7 @@ import ListItem from "@/src/components/ListItem";
 import { useContext, useEffect, useState } from "react";
 import { AuthorData, CategoryData, SongData } from "@/types";
 import { ToastContext } from "@/src/contexts/ToastContext";
-import { fetchSecureApi } from "@/src/utils";
+import { fetchPublicApi, fetchSecureApi } from "@/src/utils";
 import SongContent from "@/src/components/SongContent";
 import { UserContext } from "@/src/contexts/UserContext";
 import AuthorContent from "@/src/components/AuthorContent";
@@ -26,7 +26,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const songData = await fetchSecureApi<SongData[]>("get", "songs");
+        const songData = await fetchPublicApi<SongData[]>("get", "songs");
         if (songData) {
           setSongs(songData);
         }
@@ -71,24 +71,30 @@ export default function Home() {
           <SongContent songs={songs} />
         </div>
       </div>
-      <div className="mt-2 mb-7 px-6">
-        <div className="flex justify-between items-center">
-          <h1 className="text-white text-2xl font-semibold">Popular artists</h1>
+      {authors.length !== 0 && (
+        <div className="mt-2 mb-7 px-6">
+          <div className="flex justify-between items-center">
+            <h1 className="text-white text-2xl font-semibold">
+              Popular artists
+            </h1>
+          </div>
+          <div>
+            <AuthorContent authors={authors} />
+          </div>
         </div>
-        <div>
-          <AuthorContent authors={authors} />
+      )}
+      {categories.length !== 0 && (
+        <div className="mt-2 mb-7 px-6">
+          <div className="flex justify-between items-center">
+            <h1 className="text-white text-2xl font-semibold">
+              Listen by categories
+            </h1>
+          </div>
+          <div>
+            <CategoryContent categories={categories} />
+          </div>
         </div>
-      </div>
-      <div className="mt-2 mb-7 px-6">
-        <div className="flex justify-between items-center">
-          <h1 className="text-white text-2xl font-semibold">
-            Listen by categories
-          </h1>
-        </div>
-        <div>
-          <CategoryContent categories={categories} />
-        </div>
-      </div>
+      )}
       <Footer />
     </div>
   );

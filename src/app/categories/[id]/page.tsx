@@ -10,6 +10,8 @@ import Header from "@/src/components/Header";
 import Image from "next/image";
 import Footer from "@/src/components/Footer";
 import SongContent from "@/src/components/SongContent";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CategoryDetail = () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -38,6 +40,7 @@ const CategoryDetail = () => {
 
   return (
     <div className="bg-neutral-900  rounded-lg w-full h-full overflow-hidden overflow-y-auto">
+      <ToastContainer />
       <Header>
         <div className="mt-20">
           <div className="flex flex-col md:flex-row items-center gap-x-5">

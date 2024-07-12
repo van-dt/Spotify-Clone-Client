@@ -12,6 +12,8 @@ import SongPlaylistContent from "../components/SongPlaylistContent";
 import Image from "next/image";
 import SongPlaylistSearchContent from "../components/SongPlaylistSearchContent";
 import { Button } from "@mui/material";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface PlaylistDetailProps {
   searchParams: {
@@ -84,6 +86,7 @@ const PlaylistDetail = ({ searchParams }: PlaylistDetailProps) => {
 
   return (
     <div className="bg-neutral-900 rounded-lg w-full h-full overflow-hidden overflow-y-auto relative">
+      <ToastContainer />
       <BannerHeader
         banner={playlist?.banner ? `${apiUrl}${playlist.banner}` : undefined}
       >

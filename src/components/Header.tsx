@@ -21,6 +21,7 @@ interface HeaderProps {
 }
 
 const Header = ({ children, className, color }: HeaderProps) => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
   const loginModal = useLoginModal();
   const signUpModal = useSignUpModal();
@@ -79,7 +80,7 @@ const Header = ({ children, className, color }: HeaderProps) => {
               >
                 {user.avatarUrl ? (
                   <Image
-                    src={user.avatarUrl}
+                    src={`${apiUrl}${user.avatarUrl}`}
                     alt="Avatar"
                     fill
                     className="w-full h-full object-cover absolute rounded-full"

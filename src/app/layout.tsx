@@ -12,8 +12,8 @@ import theme from "./theme";
 const inter = Figtree({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Spotify Clone",
-  description: "spotify clone",
+  title: "Melody",
+  description: "music player system",
 };
 
 export default async function RootLayout({

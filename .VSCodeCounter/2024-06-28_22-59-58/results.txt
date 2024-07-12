@@ -1,0 +1,163 @@
+Date : 2024-06-28 22:59:58
+Directory : d:\project\DATN\spotify-clone\client
+Total : 102 files,  4175 codes, 13 comments, 587 blanks, all 4775 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| TypeScript JSX     |         72 |      3,603 |          2 |        478 |      4,083 |
+| TypeScript         |         21 |        395 |          6 |         80 |        481 |
+| JSON               |          1 |         57 |          0 |          1 |         58 |
+| PostCSS            |          1 |         43 |          4 |          9 |         56 |
+| JSON with Comments |          2 |         31 |          0 |          2 |         33 |
+| Markdown           |          1 |         23 |          0 |         14 |         37 |
+| JavaScript         |          2 |         21 |          1 |          3 |         25 |
+| XML                |          2 |          2 |          0 |          0 |          2 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                           | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                              |        102 |      4,175 |         13 |        587 |      4,775 |
+| . (Files)                                                                                      |          8 |        154 |          1 |         23 |        178 |
+| public                                                                                         |          2 |          2 |          0 |          0 |          2 |
+| src                                                                                            |         92 |      4,019 |         12 |        564 |      4,595 |
+| src\app                                                                                        |         33 |      1,140 |          4 |        177 |      1,321 |
+| src\app (Files)                                                                                |          3 |        102 |          4 |         17 |        123 |
+| src\app\(site)                                                                                 |          4 |        118 |          0 |         15 |        133 |
+| src\app\author                                                                                 |          4 |        148 |          0 |         23 |        171 |
+| src\app\author\[id]                                                                            |          3 |         90 |          0 |         15 |        105 |
+| src\app\author\components                                                                      |          1 |         58 |          0 |          8 |         66 |
+| src\app\categories                                                                             |          4 |        104 |          0 |         19 |        123 |
+| src\app\categories\[id]                                                                        |          3 |         96 |          0 |         15 |        111 |
+| src\app\categories\components                                                                  |          1 |          8 |          0 |          4 |         12 |
+| src\app\liked                                                                                  |          4 |        115 |          0 |         22 |        137 |
+| src\app\liked (Files)                                                                          |          3 |         76 |          0 |         14 |         90 |
+| src\app\liked\components                                                                       |          1 |         39 |          0 |          8 |         47 |
+| src\app\playlist                                                                               |          9 |        450 |          0 |         58 |        508 |
+| src\app\playlist (Files)                                                                       |          1 |         73 |          0 |          7 |         80 |
+| src\app\playlist\[id]                                                                          |          3 |        190 |          0 |         19 |        209 |
+| src\app\playlist\components                                                                    |          5 |        187 |          0 |         32 |        219 |
+| src\app\profile                                                                                |          1 |         17 |          0 |          3 |         20 |
+| src\app\search                                                                                 |          4 |         86 |          0 |         20 |        106 |
+| src\app\search (Files)                                                                         |          3 |         55 |          0 |         14 |         69 |
+| src\app\search\components                                                                      |          1 |         31 |          0 |          6 |         37 |
+| src\components                                                                                 |         38 |      2,405 |          2 |        284 |      2,691 |
+| src\contexts                                                                                   |          2 |         96 |          0 |         23 |        119 |
+| src\hooks                                                                                      |          8 |        107 |          0 |         37 |        144 |
+| src\libs                                                                                       |          3 |         31 |          0 |          9 |         40 |
+| src\providers                                                                                  |          1 |         28 |          0 |          7 |         35 |
+| src\types                                                                                      |          1 |        100 |          6 |         15 |        121 |
+| src\utils                                                                                      |          6 |        112 |          0 |         12 |        124 |
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                       | language           | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| d:\project\DATN\spotify-clone\client\.eslintrc.json                                            | JSON with Comments |          3 |          0 |          1 |          4 |
+| d:\project\DATN\spotify-clone\client\README.md                                                 | Markdown           |         23 |          0 |         14 |         37 |
+| d:\project\DATN\spotify-clone\client\global.d.ts                                               | TypeScript         |          3 |          0 |          1 |          4 |
+| d:\project\DATN\spotify-clone\client\next.config.mjs                                           | JavaScript         |         15 |          1 |          2 |         18 |
+| d:\project\DATN\spotify-clone\client\package.json                                              | JSON               |         57 |          0 |          1 |         58 |
+| d:\project\DATN\spotify-clone\client\postcss.config.js                                         | JavaScript         |          6 |          0 |          1 |          7 |
+| d:\project\DATN\spotify-clone\client\public\next.svg                                           | XML                |          1 |          0 |          0 |          1 |
+| d:\project\DATN\spotify-clone\client\public\vercel.svg                                         | XML                |          1 |          0 |          0 |          1 |
+| d:\project\DATN\spotify-clone\client\src\app\(site)\error.tsx                                  | TypeScript JSX     |         10 |          0 |          4 |         14 |
+| d:\project\DATN\spotify-clone\client\src\app\(site)\layout.tsx                                 | TypeScript JSX     |          7 |          0 |          1 |          8 |
+| d:\project\DATN\spotify-clone\client\src\app\(site)\loading.tsx                                | TypeScript JSX     |         11 |          0 |          4 |         15 |
+| d:\project\DATN\spotify-clone\client\src\app\(site)\page.tsx                                   | TypeScript JSX     |         90 |          0 |          6 |         96 |
+| d:\project\DATN\spotify-clone\client\src\app\author\[id]\error.tsx                             | TypeScript JSX     |         10 |          0 |          4 |         14 |
+| d:\project\DATN\spotify-clone\client\src\app\author\[id]\loading.tsx                           | TypeScript JSX     |         11 |          0 |          4 |         15 |
+| d:\project\DATN\spotify-clone\client\src\app\author\[id]\page.tsx                              | TypeScript JSX     |         69 |          0 |          7 |         76 |
+| d:\project\DATN\spotify-clone\client\src\app\author\components\SongAuthorContent.tsx           | TypeScript JSX     |         58 |          0 |          8 |         66 |
+| d:\project\DATN\spotify-clone\client\src\app\categories\[id]\error.tsx                         | TypeScript JSX     |         10 |          0 |          4 |         14 |
+| d:\project\DATN\spotify-clone\client\src\app\categories\[id]\loading.tsx                       | TypeScript JSX     |         11 |          0 |          4 |         15 |
+| d:\project\DATN\spotify-clone\client\src\app\categories\[id]\page.tsx                          | TypeScript JSX     |         75 |          0 |          7 |         82 |
+| d:\project\DATN\spotify-clone\client\src\app\categories\components\CategoryContent.tsx         | TypeScript JSX     |          8 |          0 |          4 |         12 |
+| d:\project\DATN\spotify-clone\client\src\app\globals.css                                       | PostCSS            |         43 |          4 |          9 |         56 |
+| d:\project\DATN\spotify-clone\client\src\app\layout.tsx                                        | TypeScript JSX     |         36 |          0 |          4 |         40 |
+| d:\project\DATN\spotify-clone\client\src\app\liked\components\LikedContent.tsx                 | TypeScript JSX     |         39 |          0 |          8 |         47 |
+| d:\project\DATN\spotify-clone\client\src\app\liked\error.tsx                                   | TypeScript JSX     |         10 |          0 |          4 |         14 |
+| d:\project\DATN\spotify-clone\client\src\app\liked\loading.tsx                                 | TypeScript JSX     |         11 |          0 |          4 |         15 |
+| d:\project\DATN\spotify-clone\client\src\app\liked\page.tsx                                    | TypeScript JSX     |         55 |          0 |          6 |         61 |
+| d:\project\DATN\spotify-clone\client\src\app\playlist\[id]\error.tsx                           | TypeScript JSX     |         10 |          0 |          4 |         14 |
+| d:\project\DATN\spotify-clone\client\src\app\playlist\[id]\loading.tsx                         | TypeScript JSX     |         11 |          0 |          4 |         15 |
+| d:\project\DATN\spotify-clone\client\src\app\playlist\[id]\page.tsx                            | TypeScript JSX     |        169 |          0 |         11 |        180 |
+| d:\project\DATN\spotify-clone\client\src\app\playlist\components\PlaylistContent.tsx           | TypeScript JSX     |         31 |          0 |          7 |         38 |
+| d:\project\DATN\spotify-clone\client\src\app\playlist\components\SearchPlaylistContent.tsx     | TypeScript JSX     |         43 |          0 |          6 |         49 |
+| d:\project\DATN\spotify-clone\client\src\app\playlist\components\SearchPlaylistInput.tsx       | TypeScript JSX     |         32 |          0 |          8 |         40 |
+| d:\project\DATN\spotify-clone\client\src\app\playlist\components\SongPlaylistContent.tsx       | TypeScript JSX     |         39 |          0 |          6 |         45 |
+| d:\project\DATN\spotify-clone\client\src\app\playlist\components\SongPlaylistSearchContent.tsx | TypeScript JSX     |         42 |          0 |          5 |         47 |
+| d:\project\DATN\spotify-clone\client\src\app\playlist\page.tsx                                 | TypeScript JSX     |         73 |          0 |          7 |         80 |
+| d:\project\DATN\spotify-clone\client\src\app\profile\page.tsx                                  | TypeScript JSX     |         17 |          0 |          3 |         20 |
+| d:\project\DATN\spotify-clone\client\src\app\search\components\SearchContent.tsx               | TypeScript JSX     |         31 |          0 |          6 |         37 |
+| d:\project\DATN\spotify-clone\client\src\app\search\error.tsx                                  | TypeScript JSX     |         10 |          0 |          4 |         14 |
+| d:\project\DATN\spotify-clone\client\src\app\search\loading.tsx                                | TypeScript JSX     |         11 |          0 |          4 |         15 |
+| d:\project\DATN\spotify-clone\client\src\app\search\page.tsx                                   | TypeScript JSX     |         34 |          0 |          6 |         40 |
+| d:\project\DATN\spotify-clone\client\src\app\theme.ts                                          | TypeScript         |         23 |          0 |          4 |         27 |
+| d:\project\DATN\spotify-clone\client\src\components\AuthorContent.tsx                          | TypeScript JSX     |         17 |          0 |          4 |         21 |
+| d:\project\DATN\spotify-clone\client\src\components\AuthorItem.tsx                             | TypeScript JSX     |         34 |          0 |          4 |         38 |
+| d:\project\DATN\spotify-clone\client\src\components\AuthorSelectBox.tsx                        | TypeScript JSX     |        123 |          0 |         11 |        134 |
+| d:\project\DATN\spotify-clone\client\src\components\BannerHeader.tsx                           | TypeScript JSX     |        120 |          0 |         10 |        130 |
+| d:\project\DATN\spotify-clone\client\src\components\Box.tsx                                    | TypeScript JSX     |         15 |          0 |          4 |         19 |
+| d:\project\DATN\spotify-clone\client\src\components\Button.tsx                                 | TypeScript JSX     |         23 |          0 |          5 |         28 |
+| d:\project\DATN\spotify-clone\client\src\components\CategoryContent.tsx                        | TypeScript JSX     |         19 |          0 |          4 |         23 |
+| d:\project\DATN\spotify-clone\client\src\components\CategoryItem.tsx                           | TypeScript JSX     |         31 |          0 |          4 |         35 |
+| d:\project\DATN\spotify-clone\client\src\components\CategorySelectBox.tsx                      | TypeScript JSX     |         65 |          0 |          7 |         72 |
+| d:\project\DATN\spotify-clone\client\src\components\Center.tsx                                 | TypeScript JSX     |          4 |          0 |          2 |          6 |
+| d:\project\DATN\spotify-clone\client\src\components\CreatePlaylistModel.tsx                    | TypeScript JSX     |        215 |          0 |         26 |        241 |
+| d:\project\DATN\spotify-clone\client\src\components\FileUpload.tsx                             | TypeScript JSX     |         46 |          0 |          7 |         53 |
+| d:\project\DATN\spotify-clone\client\src\components\Footer.tsx                                 | TypeScript JSX     |         22 |          0 |          2 |         24 |
+| d:\project\DATN\spotify-clone\client\src\components\Header.tsx                                 | TypeScript JSX     |        110 |          0 |         10 |        120 |
+| d:\project\DATN\spotify-clone\client\src\components\IconButton.tsx                             | TypeScript JSX     |         18 |          0 |          3 |         21 |
+| d:\project\DATN\spotify-clone\client\src\components\Input.tsx                                  | TypeScript JSX     |         21 |          0 |          5 |         26 |
+| d:\project\DATN\spotify-clone\client\src\components\Library.tsx                                | TypeScript JSX     |         70 |          0 |          8 |         78 |
+| d:\project\DATN\spotify-clone\client\src\components\LikeButton.tsx                             | TypeScript JSX     |         71 |          0 |         12 |         83 |
+| d:\project\DATN\spotify-clone\client\src\components\ListItem.tsx                               | TypeScript JSX     |         30 |          0 |          6 |         36 |
+| d:\project\DATN\spotify-clone\client\src\components\LoginModal.tsx                             | TypeScript JSX     |        180 |          0 |          9 |        189 |
+| d:\project\DATN\spotify-clone\client\src\components\MediaItem.tsx                              | TypeScript JSX     |         37 |          0 |          5 |         42 |
+| d:\project\DATN\spotify-clone\client\src\components\Modal.tsx                                  | TypeScript JSX     |         39 |          0 |          4 |         43 |
+| d:\project\DATN\spotify-clone\client\src\components\PlayButton.tsx                             | TypeScript JSX     |          9 |          0 |          3 |         12 |
+| d:\project\DATN\spotify-clone\client\src\components\PlaySlider.tsx                             | TypeScript JSX     |         82 |          0 |          7 |         89 |
+| d:\project\DATN\spotify-clone\client\src\components\Player.tsx                                 | TypeScript JSX     |         49 |          0 |          7 |         56 |
+| d:\project\DATN\spotify-clone\client\src\components\PlayerContent.tsx                          | TypeScript JSX     |        195 |          0 |         24 |        219 |
+| d:\project\DATN\spotify-clone\client\src\components\PlaylistItem.tsx                           | TypeScript JSX     |         34 |          0 |          5 |         39 |
+| d:\project\DATN\spotify-clone\client\src\components\ProfileContent.tsx                         | TypeScript JSX     |         70 |          0 |         10 |         80 |
+| d:\project\DATN\spotify-clone\client\src\components\SearchInput.tsx                            | TypeScript JSX     |         29 |          0 |          7 |         36 |
+| d:\project\DATN\spotify-clone\client\src\components\Sidebar.tsx                                | TypeScript JSX     |         82 |          0 |          8 |         90 |
+| d:\project\DATN\spotify-clone\client\src\components\SidebarItem.tsx                            | TypeScript JSX     |         24 |          0 |          4 |         28 |
+| d:\project\DATN\spotify-clone\client\src\components\SignUpModal.tsx                            | TypeScript JSX     |        184 |          0 |          9 |        193 |
+| d:\project\DATN\spotify-clone\client\src\components\Slider.tsx                                 | TypeScript JSX     |         27 |          0 |          6 |         33 |
+| d:\project\DATN\spotify-clone\client\src\components\SongContent.tsx                            | TypeScript JSX     |         26 |          0 |          6 |         32 |
+| d:\project\DATN\spotify-clone\client\src\components\SongItem.tsx                               | TypeScript JSX     |         38 |          0 |          5 |         43 |
+| d:\project\DATN\spotify-clone\client\src\components\SubscribeModel.tsx                         | TypeScript JSX     |         22 |          2 |          4 |         28 |
+| d:\project\DATN\spotify-clone\client\src\components\TexArea.tsx                                | TypeScript JSX     |         22 |          0 |          5 |         27 |
+| d:\project\DATN\spotify-clone\client\src\components\UploadModal.tsx                            | TypeScript JSX     |        202 |          0 |         22 |        224 |
+| d:\project\DATN\spotify-clone\client\src\contexts\ToastContext.tsx                             | TypeScript JSX     |         48 |          0 |         10 |         58 |
+| d:\project\DATN\spotify-clone\client\src\contexts\UserContext.tsx                              | TypeScript JSX     |         48 |          0 |         13 |         61 |
+| d:\project\DATN\spotify-clone\client\src\hooks\useCreatePlaylistModel.ts                       | TypeScript         |         12 |          0 |          4 |         16 |
+| d:\project\DATN\spotify-clone\client\src\hooks\useDebounce.ts                                  | TypeScript         |         14 |          0 |          6 |         20 |
+| d:\project\DATN\spotify-clone\client\src\hooks\useLoginModal.ts                                | TypeScript         |         12 |          0 |          4 |         16 |
+| d:\project\DATN\spotify-clone\client\src\hooks\useOnPlay.ts                                    | TypeScript         |         17 |          0 |          7 |         24 |
+| d:\project\DATN\spotify-clone\client\src\hooks\usePlayer.ts                                    | TypeScript         |         16 |          0 |          4 |         20 |
+| d:\project\DATN\spotify-clone\client\src\hooks\useSignUpModal.ts                               | TypeScript         |         12 |          0 |          4 |         16 |
+| d:\project\DATN\spotify-clone\client\src\hooks\useSubscribeModel.ts                            | TypeScript         |         12 |          0 |          4 |         16 |
+| d:\project\DATN\spotify-clone\client\src\hooks\useUploadModal.ts                               | TypeScript         |         12 |          0 |          4 |         16 |
+| d:\project\DATN\spotify-clone\client\src\libs\helpers.ts                                       | TypeScript         |         10 |          0 |          4 |         14 |
+| d:\project\DATN\spotify-clone\client\src\libs\stripe.ts                                        | TypeScript         |         11 |          0 |          2 |         13 |
+| d:\project\DATN\spotify-clone\client\src\libs\stripeClient.ts                                  | TypeScript         |         10 |          0 |          3 |         13 |
+| d:\project\DATN\spotify-clone\client\src\providers\ModalProvider.tsx                           | TypeScript JSX     |         28 |          0 |          7 |         35 |
+| d:\project\DATN\spotify-clone\client\src\types\index.ts                                        | TypeScript         |        100 |          6 |         15 |        121 |
+| d:\project\DATN\spotify-clone\client\src\utils\api.ts                                          | TypeScript         |         44 |          0 |          3 |         47 |
+| d:\project\DATN\spotify-clone\client\src\utils\apiSSR.ts                                       | TypeScript         |         45 |          0 |          3 |         48 |
+| d:\project\DATN\spotify-clone\client\src\utils\color.ts                                        | TypeScript         |          8 |          0 |          1 |          9 |
+| d:\project\DATN\spotify-clone\client\src\utils\index.ts                                        | TypeScript         |          4 |          0 |          1 |          5 |
+| d:\project\DATN\spotify-clone\client\src\utils\songs.ts                                        | TypeScript         |          6 |          0 |          2 |          8 |
+| d:\project\DATN\spotify-clone\client\src\utils\text.ts                                         | TypeScript         |          5 |          0 |          2 |          7 |
+| d:\project\DATN\spotify-clone\client\tailwind.config.ts                                        | TypeScript         |         19 |          0 |          2 |         21 |
+| d:\project\DATN\spotify-clone\client\tsconfig.json                                             | JSON with Comments |         28 |          0 |          1 |         29 |
+| Total                                                                                          |                    |      4,175 |         13 |        587 |      4,775 |
++------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

@@ -10,6 +10,8 @@ import BannerHeader from "@/src/components/BannerHeader";
 import { BsFillPatchCheckFill } from "react-icons/bs";
 import SongAuthorContent from "../components/SongAuthorContent";
 import Footer from "@/src/components/Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AuthorDetail = () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -38,6 +40,7 @@ const AuthorDetail = () => {
 
   return (
     <div className="bg-neutral-900 rounded-lg w-full h-full overflow-hidden overflow-y-auto relative">
+      <ToastContainer />
       <BannerHeader
         banner={author?.banner ? `${apiUrl}${author.banner}` : undefined}
       >

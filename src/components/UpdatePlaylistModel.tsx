@@ -2,7 +2,13 @@
 
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Modal from "./Modal";
-import { ChangeEvent, useContext, useEffect, useState } from "react";
+import {
+  ChangeEvent,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import Input from "./Input";
 import Button from "./Button";
 import { ToastContext } from "../contexts/ToastContext";
@@ -10,11 +16,16 @@ import { LuImagePlus } from "react-icons/lu";
 import Image from "next/image";
 import { fetchSecureApi } from "../utils";
 import { PlaylistData, UploadResponse } from "../types";
-import useCreatePlaylistModal from "../hooks/useCreatePlaylistModel";
+import useUpdatePlaylistModal from "../hooks/useUpdatePlaylistModel";
+import { useParams } from "next/navigation";
 
-const CreatePlaylistModel = () => {
+const UpdatePlaylistModel = () => {
+  const params = useParams<{ id: string }>();
+  const id = params.id;
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   const [isLoading, setIsLoading] = useState(false);
-  const { isOpen, onClose } = useCreatePlaylistModal();
+  const { isOpen, onClose } = useUpdatePlaylistModal();
   const { notify } = useContext(ToastContext);
 
   const [img, setImg] = useState<string>("");
@@ -66,7 +77,7 @@ const CreatePlaylistModel = () => {
   const {
     register,
     handleSubmit,
-    reset,
+    setValue,
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
@@ -76,22 +87,15 @@ const CreatePlaylistModel = () => {
     },
   });
 
-  const resetData = () => {
-    setImg("");
-    setFileImg(undefined);
-    setBanner("");
-    setFileBanner(undefined);
-  };
-
   const onChange = (open: boolean) => {
     if (!open) {
-      reset();
-      resetData();
       onClose();
     }
   };
 
   const onSubmit: SubmitHandler<FieldValues> = async (values) => {
+    console.log("validating values", values);
+
     try {
       setIsLoading(true);
 
@@ -126,8 +130,8 @@ const CreatePlaylistModel = () => {
       }
 
       const playlistData = await fetchSecureApi<PlaylistData>(
-        "post",
-        "playlists",
+        "put",
+        `playlists/${id}`,
         {
           playlistName: values.playlistName,
           image: imagePath,
@@ -137,21 +141,44 @@ const CreatePlaylistModel = () => {
 
       if (playlistData?.id) {
         setIsLoading(false);
-        notify("success", "Playlist created!");
+        notify("success", "Playlist updated!");
+        fetchData();
         setTimeout(() => {
           location.reload();
-        }, 1500);
-        reset();
+        }, 2000);
       }
     } catch (error) {
       notify("error", "Something went wrong!");
     } finally {
       setIsLoading(false);
-      reset();
-      resetData();
       onClose();
     }
   };
+
+  const fetchData = useCallback(async () => {
+    try {
+      const playlistData = await fetchSecureApi<PlaylistData>(
+        "get",
+        `playlists/${id}`
+      );
+      if (playlistData) {
+        setValue("playlistName", playlistData.playlistName);
+        if (playlistData.image) {
+          setImg(`${apiUrl}${playlistData.image}`);
+        }
+        if (playlistData.banner) {
+          setBanner(`${apiUrl}${playlistData.banner}`);
+        }
+      }
+      console.log("playlist data", playlistData);
+    } catch (error) {
+      console.error(`${error}`);
+    }
+  }, [apiUrl, id, setValue]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   useEffect(() => {
     if (errors) {
@@ -161,7 +188,7 @@ const CreatePlaylistModel = () => {
 
   return (
     <Modal
-      title="Create your playlist"
+      title="Update your playlist"
       description="Playlist according to your preferences"
       isOpen={isOpen}
       onChange={onChange}
@@ -170,7 +197,7 @@ const CreatePlaylistModel = () => {
         <Input
           id="playlistName"
           disabled={isLoading}
-          {...register("playlistName", { required: "Name is required." })}
+          {...register("playlistName")}
           placeholder="Playlist name"
         />
         {errors?.title && (
@@ -226,11 +253,11 @@ const CreatePlaylistModel = () => {
           </div>
         </div>
         <Button disabled={isLoading} type="submit">
-          Create
+          Update
         </Button>
       </form>
     </Modal>
   );
 };
 
-export default CreatePlaylistModel;
+export default UpdatePlaylistModel;

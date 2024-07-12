@@ -3,6 +3,8 @@ import useOnPlay from "../../../hooks/useOnPlay";
 import { FaPlay } from "react-icons/fa6";
 import MediaItem from "../../../components/MediaItem";
 import LikeButton from "../../../components/LikeButton";
+import { Chip } from "@mui/material";
+import useUpdatePlaylistModal from "@/hooks/useUpdatePlaylistModel";
 
 interface SongPlaylistContentProps {
   songs: SongData[];
@@ -10,6 +12,7 @@ interface SongPlaylistContentProps {
 
 const SongPlaylistContent = ({ songs }: SongPlaylistContentProps) => {
   const onPlay = useOnPlay(songs);
+  const { onOpen } = useUpdatePlaylistModal();
 
   if (songs.length === 0) {
     return (
@@ -28,6 +31,15 @@ const SongPlaylistContent = ({ songs }: SongPlaylistContentProps) => {
         >
           <FaPlay className="text-black" />
         </button>
+        <div className="pt-2 font-bold">
+          <Chip
+            label="Update Playlist"
+            variant="outlined"
+            size="medium"
+            color="secondary"
+            onClick={onOpen}
+          />
+        </div>
       </div>
       {songs.map((song) => (
         <div key={song.id} className="flex items-center gap-x-4 w-full">
